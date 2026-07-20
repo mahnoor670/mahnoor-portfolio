@@ -1,0 +1,558 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  border: none;
+}
+
+/* ── Site header ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px 32px;
+  background: #e8def8;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.site-header-brand {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #333;
+  cursor: pointer;
+}
+
+.site-header-nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.site-header-link {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #4a4a4a;
+  border: none;
+  padding: 6px 13px;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s;
+}
+
+.site-header-link.btn-red    { background: #ffdae1; }
+.site-header-link.btn-green  { background: #d4f0dc; }
+.site-header-link.btn-yellow { background: #fff2d1; }
+.site-header-link.btn-blue   { background: #d6e9fd; }
+
+.site-header-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(0,0,0,0.15);
+}
+
+.site-header-link-active {
+  outline: 2.5px solid #333;
+  outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 20px;
+  }
+
+  .site-header-nav {
+    width: 100%;
+  }
+}
+
+/* ── Floating background circles ── */
+.bg-circles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bg-circle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  opacity: 0.75;
+  animation: floatCircle var(--dur, 6s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes floatCircle {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(var(--drift, -14px)); }
+  100% { transform: translateY(0px); }
+}
+
+/* ── Home layout ── */
+.homepage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  padding: 40px;
+  min-height: 100vh;
+}
+
+/* ── Polaroid ── */
+.polaroid {
+  background: #fff;
+  padding: 11px;
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.15), 0 1px 4px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(-2deg);
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.polaroid img {
+  width: 198px;
+  height: 198px;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+}
+
+.polaroid-caption {
+  margin-top: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+.polaroid-caption h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: #222;
+  margin: 0 0 5px 0;
+}
+
+.polaroid-caption p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #555;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.polaroid-caption p.polaroid-school {
+  margin-bottom: 5px;
+}
+
+/* ── Button grid ── */
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.color-btn {
+  width: 145px;
+  height: 145px;
+  border: none;
+  border-radius: 22px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.2px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.color-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 7px 20px rgba(0,0,0,0.15);
+}
+
+.color-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.btn-red    { background: #ff8fa3; }
+.btn-green  { background: #74c990; }
+.btn-yellow { background: #ffd166; }
+.btn-blue   { background: #74b3f5; }
+
+/* ── Inner pages ── */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 48px 64px;
+  max-width: 860px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.page-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #888;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 40px;
+  padding: 0;
+  transition: color 0.15s;
+}
+
+.page-back:hover { color: #333; }
+
+.page h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 24px;
+}
+
+.page p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  color: #444;
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+.page-accent-line {
+  height: 5px;
+  border-radius: 4px;
+  width: 48px;
+  margin-bottom: 28px;
+}
+
+/* ── Favorites cards ── */
+.favorites-section {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fav-card {
+  border-radius: 18px;
+  padding: 22px 26px;
+}
+
+.fav-card h3 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 16px;
+  color: #555;
+}
+
+.fav-card-hobbies  { background: #fff0f3; }
+.fav-card-shows    { background: #f0f5ff; }
+.fav-card-music    { background: #fffbf0; }
+
+/* show + music + hobby tags */
+.fav-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.fav-tag {
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 7px 16px;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.07);
+  color: #333;
+}
+
+/* show covers */
+.fav-shows {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.fav-show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.fav-card-hobbies .fav-shows {
+  gap: 28px;
+}
+
+.fav-card-hobbies .fav-show {
+  width: 100px;
+}
+
+.fav-card-hobbies .fav-show .fav-tag {
+  text-align: center;
+  white-space: normal;
+}
+
+.fav-show-cover {
+  width: 100px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* ── Projects ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.project-card {
+  border: 1.5px solid #ebebeb;
+  border-radius: 14px;
+  padding: 18px 22px;
+}
+
+.project-card h3 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 6px;
+}
+
+.project-card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.project-tech {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #aaa !important;
+  margin-bottom: 8px !important;
+  letter-spacing: 0.2px;
+}
+
+.project-links {
+  display: flex;
+  gap: 16px;
+}
+
+.project-card a {
+  font-size: 13px;
+  font-weight: 700;
+  color: #74b3f5;
+  text-decoration: none;
+}
+
+.project-card a:hover { text-decoration: underline; }
+
+/* ── Contact ── */
+.contact-form-wrap {
+  background: #f9f9f9;
+  border-radius: 18px;
+  padding: 28px 32px;
+  margin-top: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-field label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.contact-field input,
+.contact-field textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  padding: 12px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 12px;
+  background: #fff;
+  color: #222;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.15s;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  border-color: #74b3f5;
+}
+
+.contact-submit {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  background: #74b3f5;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.contact-submit:hover {
+  background: #5aa0e8;
+  transform: translateY(-1px);
+}
+
+.contact-sent {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  color: #2a9d5c;
+  font-weight: 700;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.page-contact {
+  justify-content: center;
+  max-width: 640px;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.contact-also {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 28px 0 14px;
+}
+
+.contact-socials {
+  display: flex;
+  gap: 14px;
+}
+
+.social-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px;
+  border-radius: 18px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.social-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* ── Resume ── */
+.resume-frame {
+  flex: 1;
+  border: none;
+  border-radius: 10px;
+  margin-top: 8px;
+  min-height: 70vh;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .homepage {
+    flex-direction: column;
+    gap: 36px;
+    padding: 40px 20px;
+  }
+
+  .polaroid {
+    transform: rotate(-1deg);
+    width: 220px;
+  }
+
+  .polaroid img {
+    width: 192px;
+    height: 220px;
+  }
+
+  .color-btn {
+    width: 100px;
+    height: 100px;
+    font-size: 12px;
+  }
+
+  .page {
+    padding: 32px 24px;
+  }
+}
