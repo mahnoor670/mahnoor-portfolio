@@ -32,7 +32,7 @@ function Header({ activePage, onNavigate }) {
           <button
             key={key}
             className={`site-header-link ${color} ${activePage === key ? "site-header-link-active" : ""}`}
-            onClick={() => key === "resume" ? window.open("/resume.pdf", "_blank") : onNavigate(key)}
+            onClick={() => onNavigate(key)}
           >
             {label}
           </button>
@@ -291,7 +291,7 @@ const BUTTONS = [
 export default function App() {
   const [page, setPage] = useState(null);
 
-  if (page && page !== "resume") {
+  if (page) {
     const ActivePage = PAGE_MAP[page];
     return (
       <>
@@ -339,7 +339,7 @@ export default function App() {
           <button
             key={key}
             className={`color-btn ${color}`}
-            onClick={() => key === "resume" ? window.open("/resume.pdf", "_blank") : setPage(key)}
+            onClick={() => setPage(key)}
           >
             {label}
           </button>
