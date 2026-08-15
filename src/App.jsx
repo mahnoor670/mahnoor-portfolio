@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./App.css";
-import photo from "./assets/mahnoor.png";
+import photo from "./assets/mahnoorheadshot.png";
 import theOfficeImg from "./assets/shows/theoffice.jpg";
 import outerBanksImg from "./assets/shows/outerbanks.jpg";
 import daredevilImg from "./assets/shows/daredevil.jpg";
 import supernaturalImg from "./assets/shows/supernatural.jpg";
-import theWeekndImg from "./assets/artists/theweeknd.jpg";
-import partyNextDoorImg from "./assets/artists/partynextdoor.jpg";
-import brysonTillerImg from "./assets/artists/brysontiller.jpg";
+import graingerImg from "./assets/studyspots/grainger.jpeg";
+import thirdFloorCifImg from "./assets/studyspots/3rdfloorcif.jpeg";
+import illiniUnionImg from "./assets/studyspots/illiniunion.jpeg";
 import headphonesImg from "./assets/hobbies/headphones.png";
 import familyImg from "./assets/hobbies/family.jpg";
 import cookingImg from "./assets/hobbies/cooking.jpg";
@@ -55,10 +55,10 @@ const SHOWS = [
   { name: "Daredevil", image: daredevilImg },
   { name: "Supernatural", image: supernaturalImg },
 ];
-const ARTISTS = [
-  { name: "The Weeknd", image: theWeekndImg },
-  { name: "PARTYNEXTDOOR", image: partyNextDoorImg },
-  { name: "Bryson Tiller", image: brysonTillerImg },
+const STUDY_SPOTS = [
+  { name: "Grainger Library", image: graingerImg },
+  { name: "3rd Floor CIF", image: thirdFloorCifImg },
+  { name: "Illini Union", image: illiniUnionImg },
 ];
 
 function AboutPage({ onBack }) {
@@ -109,14 +109,21 @@ function AboutPage({ onBack }) {
           </div>
         </div>
 
-        {/* Music */}
+        {/* Study Spots */}
         <div className="fav-card fav-card-music">
-          <h3>Favorite Artists</h3>
+          <h3>Favorite Study Spots on Campus</h3>
           <div className="fav-shows">
-            {ARTISTS.map((a) => (
-              <div className="fav-show" key={a.name}>
-                <img className="fav-show-cover" src={a.image} alt={a.name} />
-                <span className="fav-tag">{a.name}</span>
+            {STUDY_SPOTS.map((s) => (
+              <div className="fav-show" key={s.name}>
+                <div className="fav-show-cover-wrap">
+                  <img
+                    className="fav-show-cover"
+                    src={s.image}
+                    alt={s.name}
+                    style={s.zoom ? { transform: `scale(${s.zoom})` } : undefined}
+                  />
+                </div>
+                <span className="fav-tag">{s.name}</span>
               </div>
             ))}
           </div>
