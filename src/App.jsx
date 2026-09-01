@@ -68,7 +68,7 @@ function AboutPage({ onBack }) {
       <h2>About Me</h2>
       <p>
         Hi! I'm Mahnoor, a student at the University of Illinois Urbana-Champaign
-        studying Computer Science + Education: Learning Sciences with a Minor in Statistics.
+        studying Computer Science + Education: Learning Sciences.
       </p>
       <p>
         I'm passionate about the intersection of technology and learning, building tools
@@ -328,8 +328,6 @@ export default function App() {
           <p className="polaroid-school">University of Illinois Urbana-Champaign</p>
           <p>
             Computer Science + Education: Learning Sciences
-            <br />
-            Minor in Statistics
           </p>
         </div>
       </div>
