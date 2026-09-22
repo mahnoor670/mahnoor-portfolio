@@ -158,6 +158,12 @@ const PROJECTS = [
     github: "https://github.com/CS222-UIUC/fa25-fa25-team019-CM3",
     demo: "https://mediaspace.illinois.edu/media/t/1_kde7q6og",
   },
+  {
+    name: "APIWatch",
+    tech: "SQL, REST API, Data Visualization",
+    description: "A centralized platform that tracks software projects' dependencies on third-party APIs and flags which projects are affected when a provider changes an endpoint, version, or deprecates a feature. Building the dashboard, project/API detail pages, search & filter tools, and the visualizations showing dependency impact, wired up to the backend.",
+    github: "https://github.com/cs411-alawini/fa26-cs411-team044-querycrew",
+  },
 ];
 
 function ProjectsPage({ onBack }) {
